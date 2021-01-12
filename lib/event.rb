@@ -20,4 +20,8 @@ class Event
       truck.sells?(item_name)
     end
   end
+
+  def sorted_item_list
+    @food_trucks.flat_map(&:item_names).uniq.sort
+  end
 end
