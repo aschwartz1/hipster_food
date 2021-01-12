@@ -50,4 +50,12 @@ class FoodTruckTest < Minitest::Test
     assert_equal true, @truck.sells?('Apple Pie')
     assert_equal false, @truck.sells?('Flaming Hot Cheetos')
   end
+
+  def test_can_calculate_potential_revenue
+    # Sum of item.price * quantity
+    @truck.stock(@apple_pie, 5)
+    @truck.stock(@peach_pie, 3)
+
+    assert_equal 23.00, @truck.potential_revenue
+  end
 end
