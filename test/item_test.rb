@@ -14,6 +14,6 @@ class ItemTest < Minitest::Test
 
   def test_readable_attributes
     assert_equal 'Apple Pie', @apple_pie.name
-    assert_equal '$2.50', @apple_pie.price
+    assert_equal 2.50, @apple_pie.price
   end
 end
