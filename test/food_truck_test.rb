@@ -5,9 +5,9 @@ require './lib/item'
 
 class FoodTruckTest < Minitest::Test
   def setup
-    @truck = FoodTruck.new("Generic Food Mobile")
+    @truck = FoodTruck.new('Generic Food Mobile')
     @apple_pie = Item.new({name: 'Apple Pie', price: '$2.50'})
-    # @peach_pie = Item.new({name: 'Peach Pie', price: '$3.50'})
+    @peach_pie = Item.new({name: 'Peach Pie', price: '$3.50'})
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class FoodTruckTest < Minitest::Test
   end
 
   def test_readable_attributes
-    assert_equal "Generic Food Mobile", @truck.name
+    assert_equal 'Generic Food Mobile', @truck.name
     assert_equal Hash.new, @truck.inventory
   end
 
@@ -41,5 +41,13 @@ class FoodTruckTest < Minitest::Test
     @truck.stock(@peach_pie, 3)
 
     assert_equal 2, @truck.inventory.size
+  end
+
+  def test_can_tell_if_it_sells_something
+    @truck.stock(@apple_pie, 5)
+    @truck.stock(@peach_pie, 3)
+
+    assert_equal true, @truck.sells?('Apple Pie')
+    assert_equal false, @truck.sells?('Flaming Hot Cheetos')
   end
 end

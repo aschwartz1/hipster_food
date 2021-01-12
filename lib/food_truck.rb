@@ -4,10 +4,11 @@ class FoodTruck
 
   def initialize(name)
     @name = name
-    @inventory = Hash.new(0)
+    @inventory = {}
   end
 
   def check_stock(item)
+    return 0 unless @inventory[item]
     @inventory[item]
   end
 
@@ -16,6 +17,12 @@ class FoodTruck
       @inventory[item] += quantity
     else
       @inventory[item] = quantity
+    end
+  end
+
+  def sells?(item_name)
+    @inventory.keys.any? do |item|
+      item.name == item_name
     end
   end
 end
