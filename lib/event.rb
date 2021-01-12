@@ -10,4 +10,14 @@ class Event
   def add_food_truck(truck)
     @food_trucks << truck
   end
+
+  def food_truck_names
+    @food_trucks.map(&:name)
+  end
+
+  def food_trucks_that_sell(item_name)
+    @food_trucks.select do |truck|
+      truck.sells?(item_name)
+    end
+  end
 end
