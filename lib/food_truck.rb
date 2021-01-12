@@ -36,4 +36,8 @@ class FoodTruck
 
     sum
   end
+
+  def item_names
+    @inventory.keys.map(&:name).sort
+  end
 end

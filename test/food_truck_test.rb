@@ -52,10 +52,16 @@ class FoodTruckTest < Minitest::Test
   end
 
   def test_can_calculate_potential_revenue
-    # Sum of item.price * quantity
     @truck.stock(@apple_pie, 5)
     @truck.stock(@peach_pie, 3)
 
     assert_equal 23.00, @truck.potential_revenue
+  end
+
+  def test_can_return_item_names
+    @truck.stock(@peach_pie, 3)
+    @truck.stock(@apple_pie, 5)
+
+    assert_equal ['Apple Pie', 'Peach Pie'], @truck.item_names
   end
 end
