@@ -21,12 +21,6 @@ class Event
     end
   end
 
-  def quantity_for(item)
-    @food_trucks.sum do |truck|
-      truck.check_stock(item)
-    end
-  end
-
   def sorted_item_list
     @food_trucks.flat_map(&:item_names).uniq.sort
   end
@@ -44,7 +38,10 @@ class Event
     inventory
   end
 
-  private
+  # I will admit I wrote these two methods without testing
+  #   in my defense I wrote the total_inventory logic first and was in the zone
+  #   My next step would be to make sure these have a test, or privatize them if I didn't
+  #   want them in the public interface
 
   def info_for(item)
     # Create quantity & trucks hash for this item
@@ -52,5 +49,11 @@ class Event
       quantity: quantity_for(item),
       food_trucks: food_trucks_that_sell(item.name)
     }
+  end
+
+  def quantity_for(item)
+    @food_trucks.sum do |truck|
+      truck.check_stock(item)
+    end
   end
 end
