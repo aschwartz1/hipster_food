@@ -64,4 +64,11 @@ class FoodTruckTest < Minitest::Test
 
     assert_equal ['Apple Pie', 'Peach Pie'], @truck.item_names
   end
+
+  def test_can_return_items
+    @truck.stock(@apple_pie, 5)
+    @truck.stock(@peach_pie, 3)
+
+    assert_equal [@apple_pie, @peach_pie], @truck.items
+  end
 end

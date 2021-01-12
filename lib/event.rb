@@ -24,4 +24,8 @@ class Event
   def sorted_item_list
     @food_trucks.flat_map(&:item_names).uniq.sort
   end
+
+  def all_items
+    @food_trucks.flat_map(&:items).uniq
+  end
 end

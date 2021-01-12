@@ -40,4 +40,8 @@ class FoodTruck
   def item_names
     @inventory.keys.map(&:name).sort
   end
+
+  def items
+    @inventory.keys
+  end
 end
