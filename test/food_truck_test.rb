@@ -35,4 +35,11 @@ class FoodTruckTest < Minitest::Test
 
     assert_equal 8, @truck.check_stock(@apple_pie)
   end
+
+  def test_can_stock_multiple_items
+    @truck.stock(@apple_pie, 5)
+    @truck.stock(@peach_pie, 3)
+
+    assert_equal 2, @truck.inventory.size
+  end
 end
