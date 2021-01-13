@@ -36,6 +36,22 @@ class Event
     end
 
     inventory
+
+    # The above solution iterates...
+    #    over food_trucks to get the items (1),
+    #    then iterating over food_trucks to get those that sell an item (2),
+    #    then iterating over food_trucks to calculate the quantity (3).
+    # That's a lot, and if the dataset gets large it would slow down
+    # Refactor suggestion:
+    # inventory = {}
+    # @food_trucks.each do |truck|
+    #   truck.inventory.each do |item, qty|
+    #     inventory[item] ||= {quantity: 0, food_trucks: []}
+    #     inventory[item][:quantity] += qty
+    #     inventory[item][:food_trucks] << truck
+    #   end
+    # end
+    # inventory
   end
 
   # I will admit I wrote these two methods without testing
